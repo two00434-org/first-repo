@@ -16,3 +16,6 @@ jobs:
         run: echo "workflow level variable=$workflow_var; job level varaible= $job_var ; variable in this step=$step_var"
         env:
           step_var: "step variable"
+
+      - name: "print saved variables"
+        run: echo "this is from Setting variables $((env.))"
