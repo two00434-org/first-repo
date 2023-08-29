@@ -1,0 +1,18 @@
+name: test variables
+
+on:
+  workflow_dispatch
+
+env:
+  workflow_var1: var1
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    env:
+      job_var2: var2
+    steps:
+      - name: "print variables"
+        run: echo "workflow level variable=$var1; job level varaible= $var2 ; variable in this step=$var3"
+        env:
+          step_var3: var3
