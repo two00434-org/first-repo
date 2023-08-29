@@ -4,15 +4,15 @@ on:
   workflow_dispatch
 
 env:
-  workflow_var1: var1
+  workflow_var: "work flow variable"
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     env:
-      job_var2: var2
+      job_var: "job variable"
     steps:
       - name: "print variables"
-        run: echo "workflow level variable=$var1; job level varaible= $var2 ; variable in this step=$var3"
+        run: echo "workflow level variable=$workflow_var; job level varaible= $job_var ; variable in this step=$step_var"
         env:
-          step_var3: var3
+          step_var: "step variable"
