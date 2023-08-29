@@ -12,8 +12,12 @@ jobs:
     env:
       job_var: "job variable"
     steps:
-      - name: "print variables"
+      - name: "print variables using Ubuntu syntax"
         run: echo "workflow level variable=$workflow_var; job level varaible= $job_var ; variable in this step=$step_var"
+        env:
+          step_var: "step variable"
+      - name: "print variables using context"
+        run: echo "workflow level variable=${{env.workflow_var}}; job level varaible= ${{env.job_var}} ; variable in this step=$step_var"
         env:
           step_var: "step variable"
 
