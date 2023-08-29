@@ -23,7 +23,8 @@ jobs:
 
       - name: "print saved org variables"
         run: |
-          echo "this is from org Setting secrets $((secrets.ORG_SECRET))"
+          echo "this is from org Setting secrets "
+          echo $((secrets.ORG_SECRET))
           echo "this is from org Setting variables $((env.ORG_VARIABLE))"
           
       - name: "print saved REPO variables"
