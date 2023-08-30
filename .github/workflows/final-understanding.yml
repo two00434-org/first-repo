@@ -26,8 +26,8 @@ jobs:
         run: |
           echo "this is from org Setting secrets  $ { {secret. "
           echo $((secrets.ORG_SECRET))
-          echo "this is from org Setting variables $ { {env. $((env.ORG_VARIABLE))"
-          echo "this is from org Setting variables $ { {vars. $((vars.ORG_VARIABLE))"
+          echo "this is from org Setting variables $ { {env. ${{env.ORG_VARIABL}}"
+          echo "this is from org Setting variables $ { {vars. ${{vars.ORG_VARIABLE}}"
           
       - name: "print saved REPO variables"
         run: |
