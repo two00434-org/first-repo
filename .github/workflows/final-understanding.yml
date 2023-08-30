@@ -1,0 +1,48 @@
+name: final-understanding
+
+on:
+  workflow_dispatch
+
+env:
+  workflow_var: "work flow variable"
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    env:
+      job_var: "job variable"
+    steps:
+      - name: "print YAML variables using Ubuntu syntax $"
+        run: echo "workflow level variable=$workflow_var; job level varaible= $job_var ; variable in this step=$step_var"
+        env:
+          step_var: "step variable"
+          
+      - name: "print YAML variables using context ${{env.}}"
+        run: echo "workflow level variable=${{env.workflow_var}}; job level varaible= ${{env.job_var}} ; variable in this step=$step_var"
+        env:
+          step_var: "step variable"
+
+      - name: "print org level's secret and variables."
+        run: |
+          echo "this is from org Setting secrets ${{secret. "
+          echo $((secrets.ORG_SECRET))
+          echo "this is from org Setting variables ${{env. $((env.ORG_VARIABLE))"
+          echo "this is from org Setting variables ${{vars. $((vars.ORG_VARIABLE))"
+          
+      - name: "print saved REPO variables"
+        run: |
+          echo "this is from repo Setting secrets $((secrets.REPO_SECRET))"
+          echo "this is from repo Setting variables vars $((vars.REPO_VARIABLE))"
+      - name: "step name as variable=github.repository ${{github.repository}}"
+        run: echo "try print variable as step name"
+
+      - name: "step name as $ only $job_var"
+        run: echo "try print variable as step name2"
+
+      - name: "step name as $env only ${{env.job_var}}"
+        run: echo "try print variable as step name3"
+
+      - name: "step name as $var only ${{vars.job_var}}"
+        run: echo "try print variable as step name4"
+
+          
